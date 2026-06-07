@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nightfall-black-marble-bortle"
+version = "0.1.0"
+description = "NASA Black Marble derived Bortle estimation utilities."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+pipeline = [
+  "h5py>=3.11",
+  "requests>=2.32",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.8",
+  "h5py>=3.11",
+  "requests>=2.32",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

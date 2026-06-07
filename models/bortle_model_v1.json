@@ -1,0 +1,12 @@
+{
+  "model_version": "nasa_black_marble_v1",
+  "grid_resolution_deg": 0.025,
+  "radius_cells": 1,
+  "feature": "median_mean_blend",
+  "formula": "clamp(intercept + slope * log10(max(feature_value, 0.1)), 1, 9)",
+  "intercept": 5.1536243743513115,
+  "slope": 2.2250785837834295,
+  "source_product": "NASA Black Marble VNP46A4",
+  "source_period": "2024-001",
+  "artifact_policy": "Do not commit raw NASA HDF5, LPM/reference labels, private coordinates, or large grid artifacts to Git history."
+}

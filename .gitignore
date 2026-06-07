@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Local data and private artifacts
+cache/
+out/
+data/
+*.h5
+*.hdf
+*.hdf5
+*.npz
+*.part
+*.log
+*validation*.csv
+*comparison*.csv
+*lpm*
+*lightpollutionmap*
+
+# Credentials
+.env
+.env.*
+*.pem
+*.key
+cookies.txt
+token*
