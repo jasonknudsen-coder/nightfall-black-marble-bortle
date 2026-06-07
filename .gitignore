@@ -13,6 +13,7 @@ build/
 cache/
 out/
 data/
+.tmp/
 *.h5
 *.hdf
 *.hdf5

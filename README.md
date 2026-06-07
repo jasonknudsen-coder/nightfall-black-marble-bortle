@@ -22,6 +22,24 @@ Current status: private, experimental, and not yet ready for public release.
 
 Large derived grids should be published later as private release assets or object storage artifacts with checksums and provenance.
 
+## Grid Releases
+
+Compact derived grids are versioned as private GitHub Release assets, not committed
+to Git and not tracked with Git LFS.
+
+Current private grid release:
+
+- Tag: `grid-v2024-001-v0.1.0`
+- Grid: `black_marble_radiance_grid_0p025deg.npz`
+- SHA256: `e161b9115b4d745184271b754e769e8592f16f7afd13a543d5634918966f3913`
+- Companion assets: `SHA256SUMS.txt`, `provenance.json`, `bortle_model_v1.json`
+
+Download and verify a release locally:
+
+```bash
+./scripts/download_grid_release.sh grid-v2024-001-v0.1.0
+```
+
 ## Runtime Example
 
 ```python
