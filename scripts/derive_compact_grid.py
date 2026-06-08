@@ -146,14 +146,9 @@ def write_outputs(
             "cells_with_observations": int((count > 0).sum()),
         },
         "source_tiles": processed,
-        "open_source_hygiene": {
+        "provenance": {
             "inputs": ["NASA LAADS Black Marble VNP46A4"],
-            "excludes": [
-                "Earthdata/LAADS tokens",
-                "proprietary lightpollutionmap.app data",
-                "private support/user locations",
-                "raw HDF5 files",
-            ],
+            "artifact_policy": "Compact derived grids are distributed as release assets with checksums and provenance.",
         },
     }
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")

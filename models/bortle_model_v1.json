@@ -8,5 +8,5 @@
   "slope": 2.2250785837834295,
   "source_product": "NASA Black Marble VNP46A4",
   "source_period": "2024-001",
-  "artifact_policy": "Do not commit raw NASA HDF5, LPM/reference labels, private coordinates, or large grid artifacts to Git history."
+  "artifact_policy": "Compact derived grids are distributed as release assets with checksums and provenance."
 }

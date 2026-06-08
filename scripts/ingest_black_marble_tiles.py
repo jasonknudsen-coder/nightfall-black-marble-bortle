@@ -48,13 +48,13 @@ def read_token() -> str:
     token = os.environ.get("LAADS_BEARER_TOKEN", "").strip()
     if token:
         return token
-    token_file = os.environ.get("LAADS_TOKEN_FILE", "/tmp/key")
-    try:
-        return Path(token_file).read_text().strip()
-    except FileNotFoundError:
-        raise SystemExit(
-            "Missing LAADS token. Set LAADS_BEARER_TOKEN or write the token to /tmp/key."
-        )
+    token_file = os.environ.get("LAADS_TOKEN_FILE", "").strip()
+    if token_file:
+        try:
+            return Path(token_file).read_text().strip()
+        except FileNotFoundError:
+            raise SystemExit(f"LAADS_TOKEN_FILE does not exist: {token_file}")
+    raise SystemExit("Missing LAADS token. Set LAADS_BEARER_TOKEN or LAADS_TOKEN_FILE.")
 
 
 def is_hdf5(path: Path) -> bool:
