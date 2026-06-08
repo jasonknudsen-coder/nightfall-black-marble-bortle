@@ -51,6 +51,21 @@ def _median(values: list[float]) -> float:
     return (sorted_values[midpoint - 1] + sorted_values[midpoint]) / 2
 
 
+def _feature_to_bortle_estimate(feature_value: float, *, intercept: float, slope: float) -> float:
+    return clamp_bortle(intercept + slope * math.log10(max(feature_value, 0.1)))
+
+
+def _cell_feature_value(median_grid: Any, mean_grid: Any, count_grid: Any, row: int, col: int) -> float | None:
+    count_value = _cell_value(count_grid, row, col)
+    if not _is_valid_number(count_value) or float(count_value) <= 0:
+        return None
+    median_value = _cell_value(median_grid, row, col)
+    mean_value = _cell_value(mean_grid, row, col)
+    if not _is_valid_number(median_value) or not _is_valid_number(mean_value):
+        return None
+    return (float(median_value) + float(mean_value)) / 2
+
+
 @lru_cache(maxsize=2)
 def load_grid(grid_path: str) -> dict[str, Any]:
     import numpy as np
@@ -115,7 +130,17 @@ def estimate_bortle(
         return None
 
     feature_value = (_median(median_values) + sum(mean_values) / len(mean_values)) / 2
-    raw_estimate = clamp_bortle(intercept + slope * math.log10(max(feature_value, 0.1)))
+    raw_estimate = _feature_to_bortle_estimate(feature_value, intercept=intercept, slope=slope)
+
+    center_feature_value = _cell_feature_value(median_grid, mean_grid, count_grid, row, col)
+    if center_feature_value is not None:
+        center_estimate = _feature_to_bortle_estimate(center_feature_value, intercept=intercept, slope=slope)
+        # Do not let a median-heavy neighborhood make a locally lit town look
+        # like dark sky. Keep neighborhood smoothing for moderate/bright areas.
+        if raw_estimate < 4.0 <= center_estimate:
+            feature_value = center_feature_value
+            raw_estimate = center_estimate
+
     return BortleEstimate(
         bortle_class=int(round(raw_estimate)),
         estimate=raw_estimate,
