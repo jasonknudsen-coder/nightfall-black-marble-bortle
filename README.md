@@ -1,8 +1,6 @@
 # Nightfall Black Marble Bortle
 
-Private working repo for Nightfall's NASA Black Marble derived Bortle estimator.
-
-Current status: private, experimental, and not yet ready for public release.
+Working repo for Nightfall's NASA Black Marble derived Bortle estimator.
 
 ## What Belongs Here
 
@@ -11,14 +9,6 @@ Current status: private, experimental, and not yet ready for public release.
 - Model metadata and provenance notes.
 - Synthetic tests and tiny fixtures.
 - Documentation for artifact boundaries and NASA attribution.
-
-## What Does Not Belong Here
-
-- Raw NASA HDF5 tiles.
-- Earthdata/LAADS tokens, cookies, credentials, or request logs.
-- Lightpollutionmap.app labels, screenshots, or scraped data.
-- Private support coordinates or user-specific benchmark rows.
-- Large compact grid artifacts committed to Git history.
 
 Large derived grids should be published later as private release assets or object storage artifacts with checksums and provenance.
 
