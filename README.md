@@ -2,6 +2,20 @@
 
 Working repo for Nightfall's NASA Black Marble derived Bortle estimator.
 
+## Overview
+
+This package turns a compact grid derived from NASA Black Marble / VIIRS
+nighttime-light data into an approximate Bortle-class estimate for a latitude
+and longitude. Nightfall Atlas uses it to give observers a reasonable starting
+point for local sky darkness when a saved observing site does not already have a
+manual Bortle value.
+
+The estimator is intentionally small: it loads a prebuilt `.npz` grid, samples
+nearby radiance cells, blends median and mean brightness, and maps that feature
+through the current `nasa_black_marble_v1` model. The output is a planning aid,
+not an official NASA product, a substitute for local observation, or a measured
+sky-quality reading.
+
 ## What Belongs Here
 
 - Runtime lookup code for compact NASA Black Marble derived grids.
