@@ -1,6 +1,6 @@
-# Nightfall Black Marble Bortle
+# Black Marble Bortle
 
-Runtime utilities for Nightfall's NASA Black Marble derived Bortle estimator.
+Runtime utilities for NASA Black Marble derived Bortle estimator.
 
 ## Overview
 
